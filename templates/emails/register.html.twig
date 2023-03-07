@@ -1,0 +1,7 @@
+<h1>Valider votre email pour créer votre compte Amap</h1>
+<p>Bonjour {{ user.prenom }} {{ user.nom }}</p>
+<p>Pour valider cliquer sur le lien ci-dessous</p>
+<p><a href="{{ absolute_url(path('verify_user', {token: token})) }}">
+    {{ absolute_url(path('verify_user', {token: token})) }}</a>
+</p>
+<p>Ce lien expire dans 10 minutes</p>

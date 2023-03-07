@@ -31,6 +31,7 @@ class UserFixtures extends Fixture
         $admin->setTelPortable('07 33 27 15 16');
         $admin->setTel2('02 55 27 69 16');
         $admin->setIsValide(true);
+        $admin->setIsMailValide(true);
         $admin->setPassword($this->passwordEncoder->hashPassword($admin, 'admin'));   // le user est $admin et le password admin
         $admin->setRoles(['ROLE_ADMIN']);
 
@@ -50,6 +51,7 @@ class UserFixtures extends Fixture
             $user->setCommune($faker->city);
             $user->setTelPortable($faker->phoneNumber);
             $user->setIsValide(true);
+            $user->setIsMailValide(true);
             $user->setPassword($this->passwordEncoder->hashPassword($user, 'secret'));
             $user->setRoles(['ROLE_ADHERENT']);
             // dump($user);     pour visualiser $user s'il y a des problèmes
@@ -70,6 +72,7 @@ class UserFixtures extends Fixture
             $user->setCommune($faker->city);
             $user->setTelPortable($faker->phoneNumber);
             //$user->setIsValide(false);         // car, dans User.php, on a mis : private ?bool $is_valide = false;
+            $user->setIsMailValide(true);
             $user->setPassword($this->passwordEncoder->hashPassword($user, 'secret'));
             $user->setRoles(['ROLE_EN_ATTENTE']);
             // dump($user);     pour visualiser $user s'il y a des problèmes
@@ -77,7 +80,7 @@ class UserFixtures extends Fixture
             $manager->persist($user);
         }
 
-        // Création de 5 producteurs
+        // Création des comptes utilisateurs de 5 producteurs
         for($usr=1; $usr<=5; $usr++){
             $user = new User();
             $user->setEmail($faker->email);
@@ -87,7 +90,8 @@ class UserFixtures extends Fixture
             $user->setCodePostal(str_replace(' ', '',$faker->postcode));  //pour enlever les espaces dans certains postcodes car on l'a limité à 5 caractères
             $user->setCommune($faker->city);
             $user->setTelPortable($faker->phoneNumber);
-            //$user->setIsValide(false);         // car, dans User.php, on a mis : private ?bool $is_valide = false;
+            //$user->setIsValide(false);
+            $user->setIsMailValide(true);
             $user->setPassword($this->passwordEncoder->hashPassword($user, 'secret'));
             $user->setRoles(['ROLE_PRODUCTEUR']);
             // dump($user);     pour visualiser $user s'il y a des problèmes
