@@ -59,6 +59,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(options: ['default' => 'FALSE'])]
     private ?bool $is_mailValide = false;
 
+    #[ORM\Column(length: 100)]
+    private ?string $resetToken;
+
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable();
@@ -250,6 +253,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsMailValide(bool $is_mailValide): self
     {
         $this->is_mailValide = $is_mailValide;
+
+        return $this;
+    }
+
+    public function getResetToken(): ?string
+    {
+        return $this->resetToken;
+    }
+
+    public function setResetToken(?string $resetToken): self
+    {
+        $this->resetToken = $resetToken;
 
         return $this;
     }

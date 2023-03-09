@@ -16,4 +16,13 @@ class ContratsController extends AbstractController
             'controller_name' => 'ContratsController',
         ]);
     }
+
+    #[Route('/', name: 'details')]
+    public function details(): Response
+    {
+        return $this->render('contrats/details.html.twig', [
+            'controller_name' => 'ContratsController',
+        ]);
+    }
+
 }
