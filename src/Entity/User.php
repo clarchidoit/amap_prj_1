@@ -59,8 +59,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(options: ['default' => 'FALSE'])]
     private ?bool $is_mailValide = false;
 
-    #[ORM\Column(length: 100)]
-    private ?string $resetToken;
+    #[ORM\Column(length: 100, nullable: true)]
+    private ?string $resetToken = null;
 
     public function __construct()
     {
