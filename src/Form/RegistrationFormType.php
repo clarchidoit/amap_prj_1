@@ -43,7 +43,7 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Tel portable'])
             ->add('tel_2', TelType::class, [
                 'attr' => ['class' => 'form-control'],
-                'label' => 'Tel n°2',
+                'label' => 'Tel n°2 (facultatif)',
                 'required' => false])
             ->add('RGPDConsent', CheckboxType::class, [
                 'attr' => ['class' => 'ms-1'],
